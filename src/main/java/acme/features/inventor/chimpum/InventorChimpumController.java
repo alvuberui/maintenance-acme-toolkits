@@ -19,9 +19,9 @@ public class InventorChimpumController extends AbstractController<Inventor, Chim
 	protected InventorChimpumShowService	showService;
 	
 	@Autowired
-
 	protected InventorChimpumUpdateService updateService;
 
+	@Autowired
 	protected InventorChimpumDelete deleteService;
 
 	
