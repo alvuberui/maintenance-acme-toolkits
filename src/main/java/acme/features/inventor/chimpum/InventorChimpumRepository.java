@@ -46,6 +46,9 @@ public interface InventorChimpumRepository  extends AbstractRepository{
 	@Query("select distinct c from Chimpum c join Artefact a on c.artefact.id = a.id join Inventor i on i.id = a.inventor.id where c.artefact.id = :artefactId and i.id = :inventorId ")
 	Collection<Chimpum> findManyChimpusByArtefactAndInventorId(int inventorId, int artefactId);
 
+	@Query("Select a.inventor from Chimpum c join Artefact a on c.artefact.id= a.id where c.id = :chimpumId")
+	Inventor findInventorByChimpum(int chimpumId);
+
 
 	
 

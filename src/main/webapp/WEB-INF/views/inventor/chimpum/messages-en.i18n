@@ -4,4 +4,15 @@ patron.chimpum.list.label.initPeriod = Initial Period
 patron.chimpum.list.label.finalPeriod = Final Period
 patron.chimpum.list.label.budget = Budget
 
+inventor.chimpum.form.label.code = Code
+inventor.chimpum.form.label.description = Description
+inventor.chimpum.form.label.initPeriod = Initial Period
+inventor.chimpum.form.label.finalPeriod  = Final Period
+inventor.chimpum.form.label.creationMoment = Creation Moment
+inventor.chimpum.form.label.budget = Budget
+inventor.chimpum.form.label.moneyExchange = Budget Exchange
+inventor.chimpum.list.label.link = link
+inventor.chimpum.form.submit.update = Update
+inventor.chimpum.form.submit.delete = Delete
+
 patron.toolkit.form.button.create.chimpum = Create
