@@ -16,3 +16,9 @@ inventor.chimpum.form.submit.update = Update
 inventor.chimpum.form.submit.delete = Delete
 
 patron.toolkit.form.button.create.chimpum = Create
+inventor.chimpum.form.submit.update.chimpum = Update
+
+inventor.chimpum.form.label.budget.positive.error = Budget must be 0 or more
+inventor.chimpum.form.error.currency = Currency not valid
+inventor.chimpum.form.label.period.month.error = Initial period must be at least one month ahead 
+inventor.chimpum.form.label.period.week.error = Period must be one week long
