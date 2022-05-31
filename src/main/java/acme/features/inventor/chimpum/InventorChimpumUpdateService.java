@@ -114,11 +114,11 @@ public class InventorChimpumUpdateService  implements AbstractUpdateService<Inve
 		if(!errors.hasErrors("initPeriod") && !errors.hasErrors("finalPeriod")) {			
 			final Period p2 = Period.between(LocalDate.of(entity.getCreationMoment().getYear(), entity.getCreationMoment().getMonth()+1, entity.getCreationMoment().getDate()), 
 					LocalDate.of(entity.getInitPeriod().getYear(), entity.getInitPeriod().getMonth()+1, entity.getInitPeriod().getDate()));
-			System.out.println(p2.getMonths());
+		
 			
 			final long p = ChronoUnit.DAYS.between(LocalDate.of(entity.getInitPeriod().getYear(), entity.getInitPeriod().getMonth()+1, entity.getInitPeriod().getDate()), 
 					LocalDate.of(entity.getFinalPeriod().getYear(), entity.getFinalPeriod().getMonth()+1, entity.getFinalPeriod().getDate()));
-			System.out.println(p);
+	
 			errors.state(request, p2.getMonths() >= 1, "initPeriod", "inventor.chimpum.form.label.period.month.error");
 			errors.state(request, p == 7, "finalPeriod", "inventor.chimpum.form.label.period.week.error");
 		}
