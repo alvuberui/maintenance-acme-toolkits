@@ -1,0 +1,7 @@
+patron.chimpum.list.label.code = Code
+patron.chimpum.list.label.description = Description
+patron.chimpum.list.label.initPeriod = Initial Period
+patron.chimpum.list.label.finalPeriod = Final Period
+patron.chimpum.list.label.budget = Budget
+
+patron.toolkit.form.button.create.chimpum = Create

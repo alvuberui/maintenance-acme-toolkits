@@ -20,6 +20,14 @@
 		</jstl:when>	
 	</jstl:choose>
 	<acme:input-url code="inventor.artefact.form.label.more-info" path="moreInfo"/>	
+
+	
+	<jstl:choose>	
+		<jstl:when test="${type == 'TOOL'}">
+						<acme:button code="inventor.chimpum.form.button.list-mine-chimpums" action="/inventor/chimpum/list-mine-chimpums?id=${id}"/>
+		</jstl:when>	
+	</jstl:choose>
+	
 	
 	<jstl:choose>	 
 		<jstl:when test="${acme:anyOf(command, 'show, update, delete, publish') && published == false}">
