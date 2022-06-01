@@ -67,8 +67,8 @@ master.menu.patron.announcements.list = Announcements list
 master.menu.patron.dashboard = Patron dashboard
 master.menu.patron.artefacts.list = Artefact List
 master.menu.patron.announcements.list = Announcements list
-
-
+master.menu.patron.system-dashboard = System Dashboard
+master.menu.patron.chimpum = Chimpum List
 
 
 

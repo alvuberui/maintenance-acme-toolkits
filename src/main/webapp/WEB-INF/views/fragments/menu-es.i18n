@@ -62,7 +62,8 @@ master.menu.patron.components.list = Lista de componentes
 master.menu.patron.patronages.list = Mis Patrocinios
 master.menu.patron.dashboard = Panel del patrón
 master.menu.patron.announcements.list = Lista de anuncios
-
+master.menu.patron.system-dashboard = Panel del Sistema
+master.menu.patron.chimpum = Lista de Chimpums
 
 # master.menu.any ########################################################
 master.menu.any = Cualquiera

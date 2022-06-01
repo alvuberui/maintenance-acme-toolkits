@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.artefact.Artefact;
-import acme.entities.artefact.ArtefactType;
 import acme.features.spam.SpamDetector;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
@@ -75,7 +74,7 @@ public class InventorArtefactUpdateService implements AbstractUpdateService<Inve
 			}
 			
 			if(!errors.hasErrors("retailPrice")){
-				errors.state(request,entity.getType() == ArtefactType.TOOL && entity.getRetailPrice().getAmount() >= 0 || entity.getType() == ArtefactType.COMPONENT && entity.getRetailPrice().getAmount() > 0, "retailPrice", "inventor.artefact.form.error.negative-salary");
+				errors.state(request, entity.getRetailPrice().getAmount() > 0, "retailPrice", "inventor.artefact.form.error.negative-salary");
 				final String money = entity.getRetailPrice().getCurrency();
 				errors.state(request, currenciesList.contains(money) , "retailPrice", "inventor.form.error.currency");
 				

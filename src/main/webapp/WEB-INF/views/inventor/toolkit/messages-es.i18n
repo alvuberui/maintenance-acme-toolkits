@@ -40,6 +40,8 @@ inventor.toolkit.form.label.quantity.error = Cantidad no válida. Tiene que ser 
 inventor.toolkit.published.error.artefacts = Esta caja de herramientas no puede ser publicada sin artefactos
 
 
-inventor.toolkit.form.label.quantity.tool.error = Cantidad inválida, herramientas solo puede tener cantidad 1, componente cantidad positiva
+inventor.toolkit.form.label.quantity.tool.error = La cantidad de una herramienta no puede ser mas de 1
 
-inventor.toolkit.form.label.quantity.string.error = Debes escribir un número
+
+
+inventor.toolkit.form.label.quantity.string.error = La cantidad debe ser un número válido

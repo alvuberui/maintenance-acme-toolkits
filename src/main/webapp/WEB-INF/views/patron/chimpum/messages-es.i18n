@@ -1,0 +1,40 @@
+patron.chimpum.form.label.code = Código
+patron.chimpum.form.label.description = Descripción
+patron.chimpum.form.label.initPeriod = Inicio del Periodo
+patron.chimpum.form.label.finalPeriod =  Final del Periodo
+patron.chimpum.form.label.budget = Presupuesto
+patron.chimpum.form.label.creationMoment = Momento de Creación
+patron.chimpum.list.label.link = Link
+patron.chimpum.form.label.artefact.selected = Herramienta Seleccionado
+patron.toolkit.form.label.artefact = Herramientas
+patron.toolkit.form.empty.list = No hay Herramientas Disponibles
+
+patron.chimpum.list.label.code = Código
+patron.chimpum.list.label.description = Descripción
+patron.chimpum.list.label.initPeriod = Inicio del Periodo
+patron.chimpum.list.label.finalPeriod =  Final del Periodo
+patron.chimpum.list.label.budget = Presupuesto
+
+patron.toolkit.form.submit.update.chimpum-artefact = Cambiar Herramienta
+patron.toolkit.form.submit.update.chimpum = Actualizar
+patron.toolkit.form.submit.delete.chimpum = Eliminar
+patron.toolkit.form.submit.create.chimpum = Crear  Chimpum
+patron.toolkit.form.button.create.chimpum = Crear  Chimpum
+
+
+
+patron.chimpum.artefact.form.label.title = Component associated
+patron.chimpum.artefact.form.label.name = Name
+patron.chimpum.artefact.form.label.code = Code
+
+patron.chimpum.artefact.form.label.title = Componente Asociado
+patron.chimpum.artefact.form.label.name = Nombre
+patron.chimpum.artefact.form.label.code = Código
+patron.chimpum.form.label.moneyExchange = Cambio de moneda
+
+patron.toolkit.form.label.period.month.error = El periodo inicial debe ser al menos un mes por delante
+patron.toolkit.form.label.period.week.error = El periodo debe durar una semana
+patron.chimpum.form.error.artefact = Chimpum necesita al menos una herramienta sin chimpum asociado
+patron.chimpum-artefact.form.error.artefact = No se puede cambiar de herramienta debido a que no hay más herramientas disponibles
+patron.chimpum.form.label.budget.positive.error =  Cantidad debe ser positiva
+patron.chimpum.form.error.currency = That currency not exists

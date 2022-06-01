@@ -39,6 +39,7 @@ inventor.toolkit.form.label.code.duplicate.error = This code is already used
 inventor.toolkit.form.label.quantity.error = Quantity not valid. Must be greater than 0
 inventor.toolkit.published.error.artefacts = This toolkit can not be published without artefacts
 
-inventor.toolkit.form.label.quantity.tool.error = Quantity invalid. Tool only can have one, component 0 or more
+inventor.toolkit.form.label.quantity.tool.error = Quantity of tool can not be more than one
 
-inventor.toolkit.form.label.quantity.string.error = You must write a number
+
+inventor.toolkit.form.label.quantity.string.error = Quantity must be a valid number

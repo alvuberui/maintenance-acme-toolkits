@@ -22,8 +22,8 @@ public class InventorToolkitsUpdateArtefactsTest extends InventorToolkitsHarness
 	@Test
 	@Order(20)
 	public void positiveUpdateArtefactToolkitInventorTest() {
-		final String componentId  = super.getIdArtefactComponentOrTool(true);
-		final String toolId  = super.getIdArtefactComponentOrTool(false);
+		String componentId  = super.getIdArtefactComponentOrTool(true);
+		String toolId  = super.getIdArtefactComponentOrTool(false);
 		super.signIn("inventor1", "inventor1");
 		super.updateArtefactFirstToolkit("4",componentId);
 		super.updateArtefactFirstToolkit("1",toolId);
@@ -36,8 +36,8 @@ public class InventorToolkitsUpdateArtefactsTest extends InventorToolkitsHarness
 	@Test
 	@Order(30)
 	public void positiveDeleteArtefactToolkitInventorTest() {
-		final String componentId  = super.getIdArtefactComponentOrTool(true);
-		final String toolId  = super.getIdArtefactComponentOrTool(false);
+		String componentId  = super.getIdArtefactComponentOrTool(true);
+		String toolId  = super.getIdArtefactComponentOrTool(false);
 		super.signIn("inventor1", "inventor1");
 		super.updateArtefactFirstToolkit("0",componentId);
 		super.updateArtefactFirstToolkit("0",toolId);
@@ -47,9 +47,9 @@ public class InventorToolkitsUpdateArtefactsTest extends InventorToolkitsHarness
 	@Test
 	@Order(40)
 	public void negativeUpdateToolToolkitInventorTest() {
-		final String toolId  = super.getIdArtefactComponentOrTool(false);
+		String toolId  = super.getIdArtefactComponentOrTool(false);
 		super.signIn("inventor1", "inventor1");
-		super.updateArtefactFirstToolkit("-5",toolId);
+		super.updateArtefactFirstToolkit("2",toolId);
 		super.checkErrorsExist();
 	}
 }

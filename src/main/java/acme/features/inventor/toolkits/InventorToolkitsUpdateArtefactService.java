@@ -28,7 +28,7 @@ public class InventorToolkitsUpdateArtefactService implements AbstractUpdateServ
 	protected InventorToolkitsRepository repository;
 	
 	@Override
-	public boolean authorise(final Request<Toolkit> request) {
+	public boolean authorise(Request<Toolkit> request) {
 		assert request != null;
 		
 		
@@ -40,13 +40,13 @@ public class InventorToolkitsUpdateArtefactService implements AbstractUpdateServ
 		
 		
 		
-		final Collection<Toolkit> toolkits = this.repository.findToolkitsByInventorId(request.getPrincipal().getActiveRoleId());
-		final boolean isMine = toolkits.stream().anyMatch(x -> x.getId() == request.getModel().getInteger("id"));
+		Collection<Toolkit> toolkits = this.repository.findToolkitsByInventorId(request.getPrincipal().getActiveRoleId());
+		boolean isMine = toolkits.stream().anyMatch(x -> x.getId() == request.getModel().getInteger("id"));
 		return !result.isPublished() && isMine;
 	}
 
 	@Override
-	public void bind(final Request<Toolkit> request, final Toolkit entity, final Errors errors) {
+	public void bind(Request<Toolkit> request, Toolkit entity, Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
@@ -56,7 +56,7 @@ public class InventorToolkitsUpdateArtefactService implements AbstractUpdateServ
 	}
 
 	@Override
-	public void unbind(final Request<Toolkit> request, final Toolkit entity, final Model model) {
+	public void unbind(Request<Toolkit> request, Toolkit entity, Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
@@ -71,7 +71,7 @@ public class InventorToolkitsUpdateArtefactService implements AbstractUpdateServ
 	}
 
 	@Override
-	public Toolkit findOne(final Request<Toolkit> request) {
+	public Toolkit findOne(Request<Toolkit> request) {
 		assert request != null;
 		
 		Toolkit result;
@@ -83,11 +83,10 @@ public class InventorToolkitsUpdateArtefactService implements AbstractUpdateServ
 	}
 
 	@Override
-	public void validate(final Request<Toolkit> request, final Toolkit entity, final Errors errors) {
+	public void validate(Request<Toolkit> request, Toolkit entity, Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		
 		
 		if(!errors.hasErrors("quantity")) {
 			try {
@@ -97,8 +96,8 @@ public class InventorToolkitsUpdateArtefactService implements AbstractUpdateServ
 				artefactId = request.getModel().getInteger("artefactId");
 				artefact = this.repository.findArtefactById(artefactId);
 				number = request.getModel().getInteger("quantity");
-				errors.state(request, artefact.getType() == ArtefactType.COMPONENT && number >=0|| (artefact.getType() == ArtefactType.TOOL &&  number <=1 && number >=0 ), "*", "inventor.toolkit.form.label.quantity.tool.error");
-			} catch (final ConversionFailedException e) {
+				errors.state(request, artefact.getType() == ArtefactType.COMPONENT || (artefact.getType() == ArtefactType.TOOL &&  number <=1 ), "quantity", "inventor.toolkit.form.label.quantity.tool.error");
+			} catch (ConversionFailedException e) {
 				errors.state(request, false, "quantity", "inventor.toolkit.form.label.quantity.string.error");
 			}
 		
@@ -106,7 +105,7 @@ public class InventorToolkitsUpdateArtefactService implements AbstractUpdateServ
 	}
 
 	@Override
-	public void update(final Request<Toolkit> request, final Toolkit entity) {
+	public void update(Request<Toolkit> request, Toolkit entity) {
 		assert request != null;
 		assert entity != null;
 

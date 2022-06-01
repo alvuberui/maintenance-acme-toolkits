@@ -1,0 +1,34 @@
+patron.chimpum.form.label.code = Code
+patron.chimpum.form.label.description = Description
+patron.chimpum.form.label.initPeriod = Initial Period
+patron.chimpum.form.label.finalPeriod =  Final Period
+patron.chimpum.form.label.budget = Budget
+patron.chimpum.form.label.creationMoment = Creation Moment
+patron.chimpum.list.label.link = Link
+patron.chimpum.form.label.artefact.selected = Tool Selected
+patron.toolkit.form.label.artefact = Tools
+patron.toolkit.form.empty.list = No Tools Available
+
+patron.chimpum.list.label.code = Code
+patron.chimpum.list.label.description = Description
+patron.chimpum.list.label.initPeriod = Initial Period
+patron.chimpum.list.label.finalPeriod =  Final Period
+patron.chimpum.list.label.budget = Budget
+
+patron.toolkit.form.submit.update.chimpum-artefact = Change Tool
+patron.toolkit.form.submit.update.chimpum = Update
+patron.toolkit.form.submit.delete.chimpum = Delete
+patron.toolkit.form.submit.create.chimpum = Create Chimpum
+patron.toolkit.form.button.create.chimpum = Create Chimpum
+
+patron.chimpum.artefact.form.label.title = Component associated
+patron.chimpum.artefact.form.label.name = Name
+patron.chimpum.artefact.form.label.code = Code
+patron.chimpum.form.label.moneyExchange = Money exchange
+
+patron.toolkit.form.label.period.month.error = Initial period must be at least one month ahead 
+patron.toolkit.form.label.period.week.error = Period must be one week long
+patron.chimpum.form.error.artefact = Chimpum need at least one tool without chimpum asociated
+patron.chimpum-artefact.form.error.artefact = Can not change tool because there are not more tools
+patron.chimpum.form.label.budget.positive.error = Amount must be positive
+patron.chimpum.form.error.currency = That currency not exists

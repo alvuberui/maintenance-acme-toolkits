@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.artefact.Artefact;
-import acme.entities.artefact.ArtefactType;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -69,7 +68,7 @@ public class InventorArtefactPublishService implements AbstractUpdateService<Inv
 			errors.state(request, existing == null || existing.getId() == entity.getId(), "code", "inventor.artefact.error.duplicated");
 		}
 		if (!errors.hasErrors("retailPrice")) {
-			errors.state(request, entity.getType() == ArtefactType.TOOL && entity.getRetailPrice().getAmount() >= 0 || entity.getType() == ArtefactType.COMPONENT && entity.getRetailPrice().getAmount() > 0, "salary", "inventor.artefact.form.error.negative-salary");
+			errors.state(request, entity.getRetailPrice().getAmount() > 0, "salary", "inventor.artefact.form.error.negative-salary");
 		}
 	}
 
