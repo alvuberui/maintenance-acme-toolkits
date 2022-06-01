@@ -1,8 +1,8 @@
-patron.chimpum.list.label.code = Código
-patron.chimpum.list.label.description = Descripción
-patron.chimpum.list.label.initPeriod = Periodo inicial
-patron.chimpum.list.label.finalPeriod = Final periodo
-patron.chimpum.list.label.budget = Presupuesto
+inventor.chimpum.list.label.code = Código
+inventor.chimpum.list.label.description = Descripción
+inventor.chimpum.list.label.initPeriod = Periodo inicial
+inventor.chimpum.list.label.finalPeriod = Final periodo
+inventor.chimpum.list.label.budget = Presupuesto
 
 inventor.chimpum.form.label.code = Código
 inventor.chimpum.form.label.description = Descripción
@@ -15,7 +15,7 @@ inventor.chimpum.list.label.link = link
 inventor.chimpum.form.submit.update = Actualizar
 inventor.chimpum.form.submit.delete = Eliminar
 
-patron.toolkit.form.button.create.chimpum = Crear
+inventor.chimpum.form.button.create = Crear
 inventor.chimpum.form.submit.update.chimpum = Actualizar
 
 

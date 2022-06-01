@@ -64,8 +64,6 @@ public class InventorArtefactShowService implements AbstractShowService<Inventor
 			
 			final int quantityChimpum = this.repository.findQuantityArtefactOfChimpum(request.getModel().getInteger("id"));
 			
-
-			System.out.println(quantityChimpum);
 			
 			request.unbind(entity, model, "type", "name", "code", "technology",
 				"description","retailPrice", "moreInfo", "published");

@@ -69,7 +69,7 @@ public class Chimpum extends AbstractEntity{
 	@OneToOne(optional=false)
 	protected Artefact artefact;
 	
-	@NotNull
+	//@NotNull
 	@Valid
 	@ManyToOne(optional = false) 
 	protected Inventor inventor;

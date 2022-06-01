@@ -29,19 +29,20 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 	
 	@Override
 	public boolean authorise(final Request<Chimpum> request) {
-		/*
-		boolean result;
-		int artefactId;
-		Principal principal;
-		
-		
-		artefactId = request.getModel().getInteger("id");
-		principal = request.getPrincipal();
-		final Inventor inventor = this.repository.findInventorByArtefactId(artefactId);
-		
-		result = principal.getActiveRoleId()==inventor.getId();
-			*/
-		return true;
+		assert request != null;
+
+        boolean result;
+
+        int artefactId;
+        Inventor inventor;
+
+
+        artefactId = request.getModel().getInteger("id");
+        inventor = this.repository.findInventorByArtefactId(artefactId);
+
+        result = request.getPrincipal().getActiveRoleId()==inventor.getId();
+
+        return result;
 	}
 
 	@Override
@@ -53,7 +54,6 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		request.bind(entity, errors, "code", "budget", "initPeriod", "finalPeriod", "description", "link");
 		
 		
-		
 	}
 
 	@Override
@@ -62,7 +62,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "budget", "initPeriod", "finalPeriod", "description", "link");
+		request.unbind(entity, model,"code", "budget", "initPeriod", "finalPeriod", "description", "link");
 		model.setAttribute("artefactId", request.getModel().getInteger("id"));
 	}
 
@@ -78,7 +78,6 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		
 		artefact = this.repository.findArtefactById(request.getModel().getInteger("id"));
 		inventor = this.repository.findOneInventorById(request.getPrincipal().getActiveRoleId());
-	//  final Inventor inventor = this.repository.findInventorByArtefactId(artefact.getId());
 		result = new Chimpum();
 		result.setInventor(inventor);
 		result.setArtefact(artefact);
@@ -93,7 +92,7 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert errors != null;
 		
-		final List<String> currenciesList = new ArrayList<>();
+		final List<String> currenciesList = new ArrayList<String>();
         final String currencies = this.repository.findAllCurrencies();
         final String[] currenciesArray = currencies.split(" ");
 
