@@ -25,8 +25,15 @@
 	<jstl:choose>	
 		<jstl:when test="${type == 'TOOL'}">
 						<acme:button code="inventor.chimpum.form.button.list-mine-chimpums" action="/inventor/chimpum/list-mine-chimpums?id=${id}"/>
+						
+						<jstl:if test="${quantity==0}">
+						<acme:button code="inventor.chimpum.form.button.create" action="/inventor/chimpum/create?id=${id}" />
+						</jstl:if>
 		</jstl:when>	
 	</jstl:choose>
+	
+	
+	
 	
 	
 	<jstl:choose>	 

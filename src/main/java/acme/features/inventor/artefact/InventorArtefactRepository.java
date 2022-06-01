@@ -41,6 +41,8 @@ public interface InventorArtefactRepository extends AbstractRepository{
 	@Query("select q from Quantity q where q.artefact.id = :id")
 	Quantity findQuantityByArtefactId(int id);
 	
+	@Query("select count(c) from Chimpum c where c.artefact.id = :id")
+	Integer findQuantityArtefactOfChimpum(int id);
 	
 	@Query("select q from Quantity q where q.artefact.id = :artefactId and q.toolkit.id = :toolkitId")
 	Quantity findQuantityByArtefactIdAndToolkitId(int artefactId, int toolkitId);

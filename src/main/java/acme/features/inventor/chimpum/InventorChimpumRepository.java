@@ -34,8 +34,12 @@ public interface InventorChimpumRepository  extends AbstractRepository{
 	@Query("select currencies from SystemConfiguration c")
     String findAllCurrencies();
 
-
 	
+	@Query("select a from Artefact a where a.id = :id")
+	Artefact findArtefactById(int id);
+
+	@Query("select i from Inventor i where i.id = :id")
+	Inventor findOneInventorById(int id);
 	
 	
 	
