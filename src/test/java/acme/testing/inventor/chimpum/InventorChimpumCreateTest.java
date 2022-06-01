@@ -10,8 +10,33 @@ import acme.testing.TestHarness;
 public class InventorChimpumCreateTest extends TestHarness {
 	
 	@ParameterizedTest
-	@CsvFileSource(resources = "/inventor/chimpum/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@CsvFileSource(resources = "/inventor/chimpum/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
+	public void negativeTest(final int recordIndex, final String code, final String descripcion, final String initPeriod, final String finalPeriod, final String creationMoment, final String budget,  final String link) {
+		
+		super.signIn("inventor1", "inventor1");
+
+		super.clickOnMenu("Inventor", "Own artefacts");
+		super.checkListingExists();
+		super.clickOnListingRecord(3);
+		super.clickOnButton("Create Chimpum");
+
+		super.fillInputBoxIn("code", code);
+		super.fillInputBoxIn("description", descripcion);
+		super.fillInputBoxIn("initPeriod", initPeriod);
+		super.fillInputBoxIn("finalPeriod", finalPeriod);
+		super.fillInputBoxIn("budget", budget);
+		super.fillInputBoxIn("link", link);
+		super.clickOnSubmit("Create");
+
+		super.checkErrorsExist();
+
+		super.signOut();
+	}
+	
+	@ParameterizedTest
+	@CsvFileSource(resources = "/inventor/chimpum/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@Order(20)
 	public void positiveTest(final int recordIndex, final String code, final String descripcion, final String initPeriod, final String finalPeriod, final String creationMoment, final String budget,  final String link) {
 
 		
@@ -36,30 +61,6 @@ public class InventorChimpumCreateTest extends TestHarness {
 		super.signOut();
 	}
 	
-	@ParameterizedTest
-	@CsvFileSource(resources = "/inventor/chimpum/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
-	@Order(20)
-	public void negativeTest(final int recordIndex, final String code, final String descripcion, final String initPeriod, final String finalPeriod, final String creationMoment, final String budget,  final String link) {
-		
-		super.signIn("inventor1", "inventor1");
-
-		super.clickOnMenu("Inventor", "Own artefacts");
-		super.checkListingExists();
-		super.clickOnListingRecord(3);
-		super.clickOnButton("Create Chimpum");
-
-		super.fillInputBoxIn("code", code);
-		super.fillInputBoxIn("description", descripcion);
-		super.fillInputBoxIn("initPeriod", initPeriod);
-		super.fillInputBoxIn("finalPeriod", finalPeriod);
-		super.fillInputBoxIn("budget", budget);
-		super.fillInputBoxIn("link", link);
-		super.clickOnSubmit("Create");
-
-		super.checkErrorsExist();
-
-		super.signOut();
-	}
 	
 	@Test
 	@Order(30)
