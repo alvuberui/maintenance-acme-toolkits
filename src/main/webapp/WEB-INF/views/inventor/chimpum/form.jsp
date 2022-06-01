@@ -21,7 +21,12 @@
 		
 	</jstl:if>
 	
-	<jstl:if test="${acme:anyOf(command, 'create')}">
+
+
+
+	
+	<jstl:if test="${acme:anyOf(command,'create, update')}">
+
 			<acme:input-textbox code="inventor.chimpum.form.label.code" path="code"/>
 			<acme:input-textbox  code="inventor.chimpum.form.label.description" path="description"/>
 			<acme:input-moment  code="inventor.chimpum.form.label.initPeriod" path="initPeriod"/>
@@ -29,6 +34,7 @@
 			<acme:input-money  code="inventor.chimpum.form.label.budget" path="budget"/>
 			<acme:input-textbox  code="inventor.chimpum.list.label.link" path="link"/>
 			
+
 			
 			
 	</jstl:if>
@@ -37,5 +43,9 @@
 	
 		<acme:submit code="inventor.chimpum.form.submit.create" action="/inventor/chimpum/create" />
 		
+
+			<acme:submit code="inventor.chimpum.form.submit.update.chimpum" action="/inventor/chimpum/update" />
+	
+
 	</jstl:if>
 </acme:form>
