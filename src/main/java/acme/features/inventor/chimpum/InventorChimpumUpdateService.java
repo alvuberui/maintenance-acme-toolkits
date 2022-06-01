@@ -36,7 +36,7 @@ public class InventorChimpumUpdateService  implements AbstractUpdateService<Inve
 		
 		chimpumId = request.getModel().getInteger("id");
 		inventor = this.repository.findInventorByChimpum(chimpumId);
-		result = request.getPrincipal().getActiveRoleId() == inventor.getId();
+		result = request.getPrincipal().getActiveRoleId() == inventor.getId() ;
 			
 		return result;
 	}
@@ -100,6 +100,12 @@ public class InventorChimpumUpdateService  implements AbstractUpdateService<Inve
         for(int i=0; i < currenciesArray.length; i++) {
             currenciesList.add(currenciesArray[i].trim());
         } 
+        if(!errors.hasErrors("code")) {
+            Chimpum chimpum;
+            chimpum = this.repository.findOneByCode(entity.getCode());
+            errors.state(request, chimpum == null || chimpum.getId() == entity.getId(), "code", "inventor.chimpum.error.duplicated");
+        }
+        
         if(!errors.hasErrors("budget")) {
             errors.state(request, entity.getBudget().getAmount() >= 0 , "budget", "inventor.chimpum.form.label.budget.positive.error");
             final String money = entity.getBudget().getCurrency();

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.artefact.Artefact;
+import acme.entities.artefact.ArtefactType;
 import acme.entities.chimpum.Chimpum;
 import acme.features.spam.SpamDetector;
 import acme.framework.components.models.Model;
@@ -40,7 +41,8 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
         artefactId = request.getModel().getInteger("id");
         inventor = this.repository.findInventorByArtefactId(artefactId);
 
-        result = request.getPrincipal().getActiveRoleId()==inventor.getId();
+        result = request.getPrincipal().getActiveRoleId()==inventor.getId() && this.repository.findArtefactById(artefactId).getType() == ArtefactType.COMPONENT;
+        
 
         return result;
 	}
@@ -99,6 +101,13 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
         for(int i=0; i < currenciesArray.length; i++) {
             currenciesList.add(currenciesArray[i].trim());
         } 
+        
+        if(!errors.hasErrors("code")) {
+            Chimpum chimpum;
+            chimpum = this.repository.findOneByCode(entity.getCode());
+            errors.state(request, chimpum == null, "code", "inventor.chimpum.error.duplicated");
+        }
+        
         if(!errors.hasErrors("budget")) {
             errors.state(request, entity.getBudget().getAmount() >= 0 , "budget", "inventor.chimpum.form.label.budget.positive.error");
             final String money = entity.getBudget().getCurrency();

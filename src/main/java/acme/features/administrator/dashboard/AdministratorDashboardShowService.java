@@ -197,10 +197,10 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 			minBudgetByCurrency.put(divisa, key);
 		}
 		
-		if(this.repository.allTools() == 0) {
+		if(this.repository.allComponents() == 0) {
 			result.setRatioToolWithChimpum(0.0);
 		}else {			
-			result.setRatioToolWithChimpum(Double.valueOf(this.repository.allToolsWithChimpum())/this.repository.allTools());
+			result.setRatioToolWithChimpum(Double.valueOf(this.repository.allComponentsWithChimpum())/this.repository.allComponents());
 		}
 		
 		result.setAvgBudgetByCurrency(avgBudgetByCurrency);

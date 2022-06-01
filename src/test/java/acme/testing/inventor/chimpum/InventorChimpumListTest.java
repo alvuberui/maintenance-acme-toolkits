@@ -15,7 +15,7 @@ public class InventorChimpumListTest extends TestHarness{
 		super.signIn("inventor1", "inventor1");
 		super.clickOnMenu("Inventor", "Own artefacts");
 		super.checkListingExists();
-		super.clickOnListingRecord(2);
+		super.clickOnListingRecord(1);
 		super.clickOnButton("List Chimpum");
 		
 		super.checkColumnHasValue(recordIndex, 0, code);

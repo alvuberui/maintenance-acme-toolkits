@@ -60,9 +60,9 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	List<String> maxBudgetByCurrency();
 	
 	
-	@Query("Select count(*) from Chimpum c where c.artefact.type = acme.entities.artefact.ArtefactType.TOOL and c.artefact != null")
-	int allToolsWithChimpum();
-	@Query("Select count(*) from Artefact a where a.type = acme.entities.artefact.ArtefactType.TOOL")
-	int allTools();
+	@Query("Select count(*) from Chimpum c where c.artefact.type = acme.entities.artefact.ArtefactType.COMPONENT and c.artefact != null")
+	int allComponentsWithChimpum();
+	@Query("Select count(*) from Artefact a where a.type = acme.entities.artefact.ArtefactType.COMPONENT")
+	int allComponents();
 	
 }

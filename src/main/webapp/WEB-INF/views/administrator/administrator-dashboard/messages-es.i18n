@@ -46,7 +46,7 @@ administrator.administrator-dashboard.form.label.patronage-min-sentence= Mínimo
 
 
 administrator.administrator-dashboard.form.label.chimpumTitle = Chimpums
-administrator.administrator-dashboard.form.label.ratio = Ratio de herramientas con Chimpum
+administrator.administrator-dashboard.form.label.ratio = Ratio de componentes con Chimpum
 administrator.administrator-dashboard.form.label.avg = Media del Presupuesto Por Divisa 
 administrator.administrator-dashboard.form.label.dev = Desviacion del Presupuesto Por Divisa
 administrator.administrator-dashboard.form.label.max = Maximo Presupuesto Por Divisa

@@ -22,3 +22,4 @@ inventor.chimpum.form.label.budget.positive.error = Budget must be 0 or more
 inventor.chimpum.form.error.currency = Currency not valid
 inventor.chimpum.form.label.period.month.error = Initial period must be at least one month ahead 
 inventor.chimpum.form.label.period.week.error = Period must be one week long
+inventor.chimpum.error.duplicated = This code is in used

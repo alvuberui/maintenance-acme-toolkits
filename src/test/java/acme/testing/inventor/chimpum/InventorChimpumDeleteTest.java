@@ -15,7 +15,7 @@ public class InventorChimpumDeleteTest extends TestHarness{
 		super.signIn("inventor1", "inventor1");
 		super.clickOnMenu("Inventor", "Own artefacts");
 		super.checkListingExists();
-		super.clickOnListingRecord(2);
+		super.clickOnListingRecord(1);
 		super.clickOnButton("List Chimpum");
 		super.clickOnListingRecord(0);
 		super.checkFormExists();
@@ -23,7 +23,7 @@ public class InventorChimpumDeleteTest extends TestHarness{
 		
 		super.clickOnMenu("Inventor", "Own artefacts");
 		super.checkListingExists();
-		super.clickOnListingRecord(2);
+		super.clickOnListingRecord(1);
 		super.clickOnButton("List Chimpum");
 		super.checkListingEmpty();
 		

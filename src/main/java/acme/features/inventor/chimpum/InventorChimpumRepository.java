@@ -21,11 +21,11 @@ public interface InventorChimpumRepository  extends AbstractRepository{
 	@Query("Select c from Chimpum c where c.id = :id")
 	Chimpum findChimpumById(int id);
 	
-	@Query("select a from Artefact a where a.published=true and a.type = acme.entities.artefact.ArtefactType.TOOL")
-	Collection<Artefact> findAllTools();
+	@Query("select a from Artefact a where a.published=true and a.type = acme.entities.artefact.ArtefactType.COMPONENT")
+	Collection<Artefact> findAllComponents();
 	
-	@Query("select a from Artefact a where a.published=true and a.id = :id and a.type = acme.entities.artefact.ArtefactType.TOOL")
-	Artefact findToolById(int id);
+	@Query("select a from Artefact a where a.published=true and a.id = :id and a.type = acme.entities.artefact.ArtefactType.COMPONENT")
+	Artefact findComponentById(int id);
 	
 
 	@Query("Select c from SystemConfiguration c")
@@ -41,6 +41,8 @@ public interface InventorChimpumRepository  extends AbstractRepository{
 	@Query("select i from Inventor i where i.id = :id")
 	Inventor findOneInventorById(int id);
 	
+	@Query("select c from Chimpum c where c.code = :code")
+    Chimpum findOneByCode(String code);
 	
 	
 	@Query("Select a.inventor from Artefact a where a.id = :artefactId")
