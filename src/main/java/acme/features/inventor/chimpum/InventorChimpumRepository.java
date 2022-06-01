@@ -53,6 +53,8 @@ public interface InventorChimpumRepository  extends AbstractRepository{
 	@Query("Select a.inventor from Chimpum c join Artefact a on c.artefact.id= a.id where c.id = :chimpumId")
 	Inventor findInventorByChimpum(int chimpumId);
 
+	@Query("select c from Chimpum c where c.code = :code")
+	Chimpum findOneByCode(String code);
 
 	
 
