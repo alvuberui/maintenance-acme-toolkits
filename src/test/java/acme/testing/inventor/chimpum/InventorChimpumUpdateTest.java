@@ -1,6 +1,7 @@
 package acme.testing.inventor.chimpum;
 
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -41,7 +42,7 @@ public class InventorChimpumUpdateTest extends TestHarness {
 	
 	@ParameterizedTest
 	@CsvFileSource(resources = "/inventor/chimpum/update-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
-	@Order(30)
+	@Order(20)
 	public void negativeTest(final int recordIndex, final String code, final String descripcion, final String initPeriod, final String finalPeriod, final String creationMoment, final String budget,  final String link) {
 		
 		super.signIn("inventor1", "inventor1");
@@ -67,6 +68,16 @@ public class InventorChimpumUpdateTest extends TestHarness {
 		
 
 		super.signOut();
+	}
+	
+	@Test
+	@Order(30)
+	public void hackingTest() {
+		
+		// TESTS LOS CUALES EL FRAMEWORK NO SOPORTA: 
+		// A) Aceder a un formulario para editar un chimpum a través de la url, poniendo la url de editar 
+		//un chimpum en un inventor diferente.
+		
 	}
 
 }
