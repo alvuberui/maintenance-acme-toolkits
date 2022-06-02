@@ -79,7 +79,7 @@ public class InventorChimpumCreateTest extends TestHarness {
 		super.signOut();
 		
 		// TESTS LOS CUALES EL FRAMEWORK NO SOPORTA: 
-		// A) Crear un chimpum accediendo a través de la url, poniendo la id de un "component"
+		// A) Crear un chimpum accediendo a través de la url, poniendo la id de un "tool"
 	}
 
 }
