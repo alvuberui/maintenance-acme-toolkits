@@ -46,6 +46,45 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		final Map<String,Double> deviationBudgetByStatus=new HashMap<String, Double>();
 		final Map<String,Double> minBudgetByStatus=new HashMap<String, Double>();
 		final Map<String,Double> maxBudgetByStatus=new HashMap<String, Double>();
+		
+		final Map<String,Double> avgBudgetByCurrency = new HashMap<String, Double>();
+		final Map<String,Double> deviationBudgetByCurrency = new HashMap<String, Double>();
+		final Map<String,Double> maxBudgetByCurrency = new HashMap<String, Double>();		 
+		final Map<String,Double> minBudgetByCurrency = new HashMap<String, Double>();
+		
+		for(final String linea : this.repository.averageBudgetByCurrency()) {
+			final String[] sub=linea.split(",");
+			final Double key=Double.parseDouble(sub[1]);
+			final String divisa=sub[0];
+			avgBudgetByCurrency.put(divisa, key);
+		}
+		
+		for(final String linea : this.repository.deviationBudgetByCurrency()) {
+			final String[] sub=linea.split(",");
+			final Double key=Double.parseDouble(sub[1]);
+			final String divisa=sub[0];
+			deviationBudgetByCurrency.put(divisa, key);
+		}
+		
+		for(final String linea : this.repository.maxBudgetByCurrency()) {
+			final String[] sub=linea.split(",");
+			final Double key=Double.parseDouble(sub[1]);
+			final String divisa=sub[0];
+			maxBudgetByCurrency.put(divisa, key);
+		}
+		
+		for(final String linea : this.repository.minBudgetByCurrency()) {
+			final String[] sub=linea.split(",");
+			final Double key=Double.parseDouble(sub[1]);
+			final String divisa=sub[0];
+			minBudgetByCurrency.put(divisa, key);
+		}
+		
+		if(this.repository.allTools() == 0) {
+			result.setRatioToolWithChimpum(0.0);
+		}else {			
+			result.setRatioToolWithChimpum(Double.valueOf(this.repository.allToolsWithChimpum())/this.repository.allTools());
+		}
 
 		int i=0;
 		
@@ -197,6 +236,12 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setNumberOfProposedPatronages(NumberOfProposedPatronages);
 		result.setNumberOfDeniedPatronages(NumberOfDeniedPatronages);	
 		
+		
+		result.setAvgBudgetByCurrency(avgBudgetByCurrency);
+		result.setDeviationBudgetByCurrency(deviationBudgetByCurrency);
+		result.setMaxBudgetByCurrency(maxBudgetByCurrency);
+		result.setMinBudgetByCurrency(minBudgetByCurrency);
+		
 		return result;
 	}
 
@@ -208,7 +253,8 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 
 		request.unbind(entity, model, "NumberOfProposedPatronages", "NumberOfAcceptedPatronages", "NumberOfDeniedPatronages", 
 			"NumberOfComponents", "avgRetailPriceOfComponents", "deviationRetailPriceOfComponents", "minRetailPriceOfComponents","maxRetailPriceOfComponents",
-			"NumberOfTools","avgRetailPriceOfTools","deviationRetailPriceOfTools","minRetailPriceOfTools","maxRetailPriceOfTools","avgBudgetByStatus","deviationBudgetByStatus","maxBudgetByStatus","minBudgetByStatus");
+			"NumberOfTools","avgRetailPriceOfTools","deviationRetailPriceOfTools","minRetailPriceOfTools","maxRetailPriceOfTools","avgBudgetByStatus","deviationBudgetByStatus","maxBudgetByStatus","minBudgetByStatus",
+			"ratioToolWithChimpum", "avgBudgetByCurrency", "deviationBudgetByCurrency", "maxBudgetByCurrency", "minBudgetByCurrency");
 	}}
 
 

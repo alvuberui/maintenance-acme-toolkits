@@ -22,6 +22,16 @@ public class AdministratorDashboard implements Serializable {
 		
 		int numberOfTools;
 		
+		double ratioToolWithChimpum;
+		
+		Map<String,Double> avgBudgetByCurrency;
+		
+		Map<String,Double> deviationBudgetByCurrency;
+		
+		Map<String,Double> maxBudgetByCurrency;
+		
+		Map<String,Double> minBudgetByCurrency;
+		
 		Map<Pair<String,String>,Double>avgRetailPriceOfComponents;
 		
 		Map<Pair<String,String>,Double>deviationRetailPriceOfComponents;

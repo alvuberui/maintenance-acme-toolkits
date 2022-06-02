@@ -42,6 +42,10 @@ administrator.administrator-dashboard.form.label.absoluteTitle = Number of Metri
 
 
 
-
-
+administrator.administrator-dashboard.form.label.ratio = Ratio of tool with Chimpum
+administrator.administrator-dashboard.form.label.avg = Average Budget By Currency
+administrator.administrator-dashboard.form.label.dev = Deviation Budget By Currency
+administrator.administrator-dashboard.form.label.max = Maximum Budget By Currency
+administrator.administrator-dashboard.form.label.min = Minimum Budget By Currency
+administrator.administrator-dashboard.form.label.Chimpum = Chimpum
 

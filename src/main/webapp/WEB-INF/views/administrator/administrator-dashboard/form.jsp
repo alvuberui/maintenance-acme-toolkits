@@ -69,7 +69,79 @@
 					<acme:print value="${NumberOfTools}"/> 
 				</td>		
 			</tr>
+			<tr>	
+				<th id="">
+					<acme:message code="administrator.administrator-dashboard.form.label.ratio"/>		
+				</th>
+				<td style= "text-align:right;">
+					<acme:print value="${ratioToolWithChimpum}"/>
+				</td>		
+			</tr>
 	</table>
+	
+	
+		<acme:message code="administrator.administrator-dashboard.form.label.Chimpum"/>
+		<br></br>
+	
+	<table class="table table-sm" >
+    <acme:message code="administrator.administrator-dashboard.form.label.avg"/>
+    <jstl:forEach items="${avgBudgetByCurrency}" var="entry">
+        <tr>
+            <th scope="row" style="width:10%">
+                <acme:print value="${entry.key}"/>
+            </th>
+            <td style= "text-align:right;">
+                <acme:print value="${entry.value}"/>
+            </td>
+        </tr>
+    </jstl:forEach>
+</table>
+
+	<table class="table table-sm" >
+    <acme:message code="administrator.administrator-dashboard.form.label.dev"/>
+    <jstl:forEach items="${deviationBudgetByCurrency}" var="entry">
+        <tr>
+            <th scope="row" style="width:10%">
+                <acme:print value="${entry.key}"/>
+            </th>
+            <td style= "text-align:right;">
+                <acme:print value="${entry.value}"/>
+            </td>
+        </tr>
+    </jstl:forEach>
+</table>
+
+	<table class="table table-sm" >
+    <acme:message code="administrator.administrator-dashboard.form.label.max"/>
+    <jstl:forEach items="${maxBudgetByCurrency}" var="entry">
+        <tr>
+            <th scope="row" style="width:10%">
+                <acme:print value="${entry.key}"/>
+            </th>
+            <td style= "text-align:right;">
+                <acme:print value="${entry.value}"/>
+            </td>
+        </tr>
+    </jstl:forEach>
+</table>
+
+	<table class="table table-sm" >
+    <acme:message code="administrator.administrator-dashboard.form.label.min"/>
+    <jstl:forEach items="${minBudgetByCurrency}" var="entry">
+        <tr>
+            <th scope="row" style="width:10%">
+                <acme:print value="${entry.key}"/>
+            </th>
+            <td style= "text-align:right;">
+                <acme:print value="${entry.value}"/>
+            </td>
+        </tr>
+    </jstl:forEach>
+</table>
+	
+	
+	
+	
 	
 	
 	
