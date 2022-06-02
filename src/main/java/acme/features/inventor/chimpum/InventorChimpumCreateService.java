@@ -117,17 +117,38 @@ public class InventorChimpumCreateService implements AbstractCreateService<Inven
 			errors.state(request, SpamDetector.error(entity.getDescription(),  this.repository.findSystemConfiguration()), "description", "any.form.error.spam");
 		}
 		
-	
-		if(!errors.hasErrors("initPeriod") && !errors.hasErrors("finalPeriod")) {			
-			final Period p2 = Period.between(LocalDate.of(entity.getCreationMoment().getYear(), entity.getCreationMoment().getMonth()+1, entity.getCreationMoment().getDate()), 
-					LocalDate.of(entity.getInitPeriod().getYear(), entity.getInitPeriod().getMonth()+1, entity.getInitPeriod().getDate()));
 		
+		
+		if(!errors.hasErrors("finalPeriod")) {
+			
+			if(entity.getInitPeriod()!=null) {
+				
 			
 			final long p = ChronoUnit.DAYS.between(LocalDate.of(entity.getInitPeriod().getYear(), entity.getInitPeriod().getMonth()+1, entity.getInitPeriod().getDate()), 
-					LocalDate.of(entity.getFinalPeriod().getYear(), entity.getFinalPeriod().getMonth()+1, entity.getFinalPeriod().getDate()));
-	
-			errors.state(request, p2.getMonths() >= 1, "initPeriod", "inventor.chimpum.form.label.period.month.error");
+			LocalDate.of(entity.getFinalPeriod().getYear(), entity.getFinalPeriod().getMonth()+1, entity.getFinalPeriod().getDate()));
+		
 			errors.state(request, p == 7, "finalPeriod", "inventor.chimpum.form.label.period.week.error");
+			}
+			
+		}
+		
+		
+		if(!errors.hasErrors("initPeriod")) {			
+		
+			
+			
+			final Period periodCreationInit = Period.between(LocalDate.of(entity.getCreationMoment().getYear(), entity.getCreationMoment().getMonth()+1, entity.getCreationMoment().getDate()), 
+				LocalDate.of(entity.getInitPeriod().getYear(), entity.getInitPeriod().getMonth()+1, entity.getInitPeriod().getDate()));
+			
+			
+			if(periodCreationInit.isNegative()==true && entity.getCreationMoment().getYear()!= entity.getInitPeriod().getYear()) {
+			errors.state(request, periodCreationInit.isNegative()!=true, "initPeriod", "inventor.chimpum.form.label.period.beforeyear.error");
+			
+			}else if(entity.getCreationMoment().getYear()== entity.getInitPeriod().getYear()) {
+				errors.state(request, periodCreationInit.getMonths()>=1, "initPeriod", "inventor.chimpum.form.label.period.month.error");
+
+			}
+			
 		}
 		
 	}

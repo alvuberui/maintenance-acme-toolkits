@@ -32,4 +32,4 @@ inventor.artefact.form.label.money-exchange = Precio del sistema
 
 inventor.artefact.error.duplicated = Código duplicado, ya existe uno
 inventor.artefact.form.error.negative-salary = No es posible asignar una cantidad negativa
-inventor.chimpum.form.button.create = Crear Chimpum
+inventor.chimpum.form.button.create-chimpum = Crear Chimpum
