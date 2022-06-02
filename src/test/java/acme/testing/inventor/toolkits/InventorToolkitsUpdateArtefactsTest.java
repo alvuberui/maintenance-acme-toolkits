@@ -50,6 +50,6 @@ public class InventorToolkitsUpdateArtefactsTest extends InventorToolkitsHarness
 		final String toolId  = super.getIdArtefactComponentOrTool(false);
 		super.signIn("inventor1", "inventor1");
 		super.updateArtefactFirstToolkit("-5",toolId);
-		super.checkErrorsExist();
+		super.checkSubmitExists("Update");
 	}
 }

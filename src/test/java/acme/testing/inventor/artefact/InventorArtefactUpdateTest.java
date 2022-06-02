@@ -21,6 +21,7 @@ public class InventorArtefactUpdateTest extends TestHarness {
 		super.sortListing(2, "desc");
 
 		super.clickOnListingRecord(0);
+		super.clickOnButton("Update");
 		super.fillInputBoxIn("type", type);
 		super.fillInputBoxIn("name", name);
 		super.fillInputBoxIn("code", code);
@@ -47,6 +48,7 @@ public class InventorArtefactUpdateTest extends TestHarness {
 		super.sortListing(1, "desc");
 		
 		super.clickOnListingRecord(0);
+		super.clickOnButton("Update");
 		super.fillInputBoxIn("type", type);
 		super.fillInputBoxIn("name", name);
 		super.fillInputBoxIn("code", code);

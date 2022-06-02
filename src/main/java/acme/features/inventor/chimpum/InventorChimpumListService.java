@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.artefact.ArtefactType;
 import acme.entities.chimpum.Chimpum;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
@@ -32,7 +33,7 @@ public class InventorChimpumListService implements AbstractListService<Inventor,
 			principal = request.getPrincipal();
 			final Inventor inventor = this.repository.findInventorByArtefactId(artefactId);
 			
-			result = principal.getActiveRoleId()==inventor.getId();
+			result = principal.getActiveRoleId()==inventor.getId() && this.repository.findArtefactById(artefactId).getType() == ArtefactType.COMPONENT;
 				
 			return result;
 		}
