@@ -1,6 +1,7 @@
 package acme.testing.patron.chimpum;
 
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -64,5 +65,15 @@ public class PatronChimpumUpdateTest  extends TestHarness {
 		
 
 		super.signOut();
+	}
+	
+	@Test
+	@Order(30)
+	public void hackingTest() {
+		
+		// TESTS LOS CUALES EL FRAMEWORK NO SOPORTA: 
+		// A) Aceder a un formulario para editar un chimpum a través de la url, poniendo la url de editar 
+		//un chimpum en un patron diferente.
+		
 	}
 }

@@ -119,7 +119,7 @@ public class PatronChimpumUpdateService  implements AbstractUpdateService<Patron
 		if(!errors.hasErrors("code")) {
             Chimpum chimpum;
             chimpum = this.repository.findOneByCode(entity.getCode());
-            errors.state(request, chimpum == null, "code", "inventor.chimpum.error.duplicated");
+            errors.state(request, chimpum == null || chimpum.getId() == entity.getId(), "code", "inventor.chimpum.error.duplicated");
         }
 		
 		
