@@ -70,13 +70,13 @@ public class PatronChimpumShowService implements AbstractShowService<Patron,Chim
 		
 		model.setAttribute("moneyExchange", this.exchangeService.exchangeMoneySystemConfiguration(entity.getBudget()));
         if(entity.getArtefact() != null) {
-            model.setAttribute("toolName", entity.getArtefact().getName());
-            model.setAttribute("toolCode", entity.getArtefact().getCode());
-            model.setAttribute("toolDescription", entity.getArtefact().getDescription());
-            model.setAttribute("toolTechonology", entity.getArtefact().getTechnology());
-            model.setAttribute("toolRetailPrice", entity.getArtefact().getRetailPrice());
+            model.setAttribute("ComponentName", entity.getArtefact().getName());
+            model.setAttribute("ComponentCode", entity.getArtefact().getCode());
+            model.setAttribute("ComponentDescription", entity.getArtefact().getDescription());
+            model.setAttribute("ComponentTechonology", entity.getArtefact().getTechnology());
+            model.setAttribute("ComponentRetailPrice", entity.getArtefact().getRetailPrice());
             model.setAttribute("moneyExchangeRetail", this.exchangeService.exchangeMoneySystemConfiguration(entity.getArtefact().getRetailPrice()));
-            model.setAttribute("toolInventor", entity.getArtefact().getInventor().getUserAccount().getUsername());
+            model.setAttribute("ComponentInventor", entity.getArtefact().getInventor().getUserAccount().getUsername());
         }
 	}
 

@@ -20,13 +20,13 @@
 		<br></br>
 		
 		<h3> <acme:message code="patron.chimpum.artefact.form.label.title"/> </h3>
-		<acme:input-textbox readonly="true" code="patron.chimpum.artefact.form.label.name" path="toolName"/>
-		<acme:input-textbox readonly="true" code="patron.chimpum.artefact.form.label.code" path="toolCode"/>
-		<acme:input-textbox readonly="true" code="patron.chimpum.artefact.form.label.toolDescription" path="toolDescription"/>
-		<acme:input-textbox readonly="true" code="patron.chimpum.artefact.form.label.toolTechonology" path="toolTechonology"/>
-		<acme:input-textbox readonly="true" code="patron.chimpum.artefact.form.label.toolRetailPrice" path="toolRetailPrice"/>
+		<acme:input-textbox readonly="true" code="patron.chimpum.artefact.form.label.name" path="ComponentName"/>
+		<acme:input-textbox readonly="true" code="patron.chimpum.artefact.form.label.code" path="ComponentCode"/>
+		<acme:input-textbox readonly="true" code="patron.chimpum.artefact.form.label.ComponentDescription" path="ComponentDescription"/>
+		<acme:input-textbox readonly="true" code="patron.chimpum.artefact.form.label.ComponentTechonology" path="ComponentTechonology"/>
+		<acme:input-textbox readonly="true" code="patron.chimpum.artefact.form.label.ComponentRetailPrice" path="ComponentRetailPrice"/>
 		<acme:input-textbox readonly="true" code="patron.chimpum.artefact.form.label.moneyExchangeRetail" path="moneyExchangeRetail"/>
-		<acme:input-textbox readonly="true" code="patron.chimpum.artefact.form.label.toolInventor" path="toolInventor"/>
+		<acme:input-textbox readonly="true" code="patron.chimpum.artefact.form.label.ComponentInventor" path="ComponentInventor"/>
 		
 		
 		<acme:button code="patron.toolkit.form.submit.update.chimpum-artefact" action="/patron/chimpum/update-artefact?id=${chimpumId}" />

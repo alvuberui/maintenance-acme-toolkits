@@ -72,7 +72,7 @@ public class PatronChimpumUpdateArtefactService  implements AbstractUpdateServic
 		Collection<Chimpum> chimpums;
 		
 		
-		artefacts = this.repository.findAllTools();
+		artefacts = this.repository.findAllComponents();
 		chimpums = this.repository.findAllChimpum();
 		
 		for (final Chimpum c : chimpums) {
@@ -108,7 +108,7 @@ public class PatronChimpumUpdateArtefactService  implements AbstractUpdateServic
 		Collection<Chimpum> chimpums;
 		
 		
-		artefacts = this.repository.findAllTools();
+		artefacts = this.repository.findAllComponents();
 		chimpums = this.repository.findAllChimpum();
 		
 		for (final Chimpum c : chimpums) {
@@ -120,10 +120,10 @@ public class PatronChimpumUpdateArtefactService  implements AbstractUpdateServic
 			errors.state(request, !artefacts.isEmpty(),  "*", "patron.chimpum-artefact.form.error.artefact");
 		}
 		
-		final Integer toolId = request.getModel().getInteger("artefactId");
+		final Integer ComponentId = request.getModel().getInteger("artefactId");
 		
-		if(toolId != null && !errors.hasErrors()) {
-			entity.setArtefact(this.repository.findToolById(toolId));
+		if(ComponentId != null && !errors.hasErrors()) {
+			entity.setArtefact(this.repository.findComponentlById(ComponentId));
 		}
 		
 	}

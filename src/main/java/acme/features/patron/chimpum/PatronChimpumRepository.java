@@ -22,11 +22,11 @@ public interface PatronChimpumRepository  extends AbstractRepository{
 	@Query("Select c from Chimpum c where c.id = :id")
 	Chimpum findChimpumById(int id);
 	
-	@Query("select a from Artefact a where a.published=true and a.type = acme.entities.artefact.ArtefactType.TOOL")
-	Collection<Artefact> findAllTools();
+	@Query("select a from Artefact a where a.published=true and a.type = acme.entities.artefact.ArtefactType.COMPONENT")
+	Collection<Artefact> findAllComponents();
 	
-	@Query("select a from Artefact a where a.published=true and a.id = :id and a.type = acme.entities.artefact.ArtefactType.TOOL")
-	Artefact findToolById(int id);
+	@Query("select a from Artefact a where a.published=true and a.id = :id and a.type = acme.entities.artefact.ArtefactType.COMPONENT")
+	Artefact findComponentlById(int id);
 	
 
 	@Query("Select c from SystemConfiguration c")
