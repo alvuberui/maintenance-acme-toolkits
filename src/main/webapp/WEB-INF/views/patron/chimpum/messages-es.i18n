@@ -38,3 +38,13 @@ patron.chimpum.form.error.artefact = Chimpum necesita al menos una herramienta s
 patron.chimpum-artefact.form.error.artefact = No se puede cambiar de herramienta debido a que no hay más herramientas disponibles
 patron.chimpum.form.label.budget.positive.error =  Cantidad debe ser positiva
 patron.chimpum.form.error.currency = That currency not exists
+inventor.chimpum.error.duplicated = Este código ya existe
+
+patron.chimpum.artefact.form.label.toolInventor = Inventor
+patron.chimpum.artefact.form.label.moneyExchangeRetail = Cambio moneda precio herramienta
+patron.chimpum.artefact.form.label.toolRetailPrice = Precio
+patron.chimpum.artefact.form.label.toolTechonology = Tecnología
+patron.chimpum.artefact.form.label.toolDescription = Descripción
+inventor.chimpum.form.label.period.beforeyear.error = El periodo inicial debe ser al menos un mes después de la fecha de creación
+inventor.chimpum.form.label.period.month.error  = El periodo inicial debe ser al menos un mes después de la fecha de creación
+inventor.chimpum.form.label.period.week.error = El periodo entre periodo inicial y final debe ser una semana

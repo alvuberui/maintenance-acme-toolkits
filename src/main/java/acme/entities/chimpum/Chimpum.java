@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,6 +20,7 @@ import org.springframework.data.annotation.CreatedDate;
 import acme.entities.artefact.Artefact;
 import acme.framework.datatypes.Money;
 import acme.framework.entities.AbstractEntity;
+import acme.roles.Patron;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -66,5 +68,10 @@ public class Chimpum extends AbstractEntity{
 	@Valid
 	@OneToOne(optional=false)
 	protected Artefact artefact;
+	
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false) 
+	protected Patron patron; 
 	
 }

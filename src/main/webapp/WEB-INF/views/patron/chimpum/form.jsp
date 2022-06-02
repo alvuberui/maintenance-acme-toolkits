@@ -22,6 +22,13 @@
 		<h3> <acme:message code="patron.chimpum.artefact.form.label.title"/> </h3>
 		<acme:input-textbox readonly="true" code="patron.chimpum.artefact.form.label.name" path="toolName"/>
 		<acme:input-textbox readonly="true" code="patron.chimpum.artefact.form.label.code" path="toolCode"/>
+		<acme:input-textbox readonly="true" code="patron.chimpum.artefact.form.label.toolDescription" path="toolDescription"/>
+		<acme:input-textbox readonly="true" code="patron.chimpum.artefact.form.label.toolTechonology" path="toolTechonology"/>
+		<acme:input-textbox readonly="true" code="patron.chimpum.artefact.form.label.toolRetailPrice" path="toolRetailPrice"/>
+		<acme:input-textbox readonly="true" code="patron.chimpum.artefact.form.label.moneyExchangeRetail" path="moneyExchangeRetail"/>
+		<acme:input-textbox readonly="true" code="patron.chimpum.artefact.form.label.toolInventor" path="toolInventor"/>
+		
+		
 		<acme:button code="patron.toolkit.form.submit.update.chimpum-artefact" action="/patron/chimpum/update-artefact?id=${chimpumId}" />
 		<acme:button code="patron.toolkit.form.submit.update.chimpum" action="/patron/chimpum/update?id=${chimpumId}" />
 		<acme:submit code="patron.toolkit.form.submit.delete.chimpum" action="/patron/chimpum/delete" />

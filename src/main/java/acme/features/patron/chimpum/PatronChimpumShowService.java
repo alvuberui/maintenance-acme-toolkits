@@ -8,6 +8,7 @@ import acme.components.ExchangeService;
 import acme.entities.chimpum.Chimpum;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractShowService;
 import acme.roles.Patron;
 
@@ -24,7 +25,22 @@ public class PatronChimpumShowService implements AbstractShowService<Patron,Chim
 	
 	@Override
 	public boolean authorise(final Request<Chimpum> request) {
-		return true;
+		assert request != null;
+		boolean result;
+		final int chimpumId;
+		final Chimpum chimpum;
+		Principal user;
+		final int patronId;
+		
+		
+		chimpumId = request.getModel().getInteger("id");
+		user = request.getPrincipal();
+		chimpum = this.repository.findChimpumById(chimpumId);
+		patronId = chimpum.getPatron().getId();
+		
+		result = (patronId == user.getActiveRoleId());
+		
+		return result;
 	}
 
 	@Override
@@ -56,6 +72,11 @@ public class PatronChimpumShowService implements AbstractShowService<Patron,Chim
         if(entity.getArtefact() != null) {
             model.setAttribute("toolName", entity.getArtefact().getName());
             model.setAttribute("toolCode", entity.getArtefact().getCode());
+            model.setAttribute("toolDescription", entity.getArtefact().getDescription());
+            model.setAttribute("toolTechonology", entity.getArtefact().getTechnology());
+            model.setAttribute("toolRetailPrice", entity.getArtefact().getRetailPrice());
+            model.setAttribute("moneyExchangeRetail", this.exchangeService.exchangeMoneySystemConfiguration(entity.getArtefact().getRetailPrice()));
+            model.setAttribute("toolInventor", entity.getArtefact().getInventor().getUserAccount().getUsername());
         }
 	}
 

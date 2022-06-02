@@ -13,6 +13,7 @@ import acme.entities.chimpum.Chimpum;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractUpdateService;
 import acme.roles.Patron;
 
@@ -27,7 +28,22 @@ public class PatronChimpumUpdateArtefactService  implements AbstractUpdateServic
 	
 	@Override
 	public boolean authorise(final Request<Chimpum> request) {
-		return true;
+		assert request != null;
+		boolean result;
+		final int chimpumId;
+		final Chimpum chimpum;
+		Principal user;
+		final int patronId;
+		
+		
+		chimpumId = request.getModel().getInteger("id");
+		user = request.getPrincipal();
+		chimpum = this.repository.findChimpumById(chimpumId);
+		patronId = chimpum.getPatron().getId();
+		
+		result = (patronId == user.getActiveRoleId());
+		
+		return result;
 	}
 
 	@Override

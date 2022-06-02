@@ -32,7 +32,9 @@ public class PatronChimpumListService implements AbstractListService<Patron, Chi
 		assert request != null;
 		Collection<Chimpum> chimpums;
 		
-		chimpums = this.repository.findAllChimpum();
+		final int patronId = request.getPrincipal().getActiveRoleId();
+		
+		chimpums = this.repository.findChimpumByPatronId(patronId);
 		
 		return chimpums;
 	}

@@ -49,7 +49,9 @@ public class PatronChimpumCreateService implements AbstractCreateService<Patron,
 				"finalPeriod", "description", "link");
 		
 		
-		
+		final int patronId = request.getPrincipal().getActiveRoleId();
+		final Patron patron = this.repository.findPatronById(patronId);
+		entity.setPatron(patron);
 		entity.setCreationMoment(Date.from(Instant.now()));
 		
 
@@ -111,18 +113,46 @@ public class PatronChimpumCreateService implements AbstractCreateService<Patron,
 			errors.state(request, SpamDetector.error(entity.getDescription(),  this.repository.findSystemConfiguration()), "description", "any.form.error.spam");
 		}
 		
+		
+		if(!errors.hasErrors("code")) {
+            Chimpum chimpum;
+            chimpum = this.repository.findOneByCode(entity.getCode());
+            errors.state(request, chimpum == null, "code", "inventor.chimpum.error.duplicated");
+        }
 	
-		if(!errors.hasErrors("initPeriod") && !errors.hasErrors("finalPeriod")) {			
-			final Period p2 = Period.between(LocalDate.of(entity.getCreationMoment().getYear(), entity.getCreationMoment().getMonth()+1, entity.getCreationMoment().getDate()), 
-					LocalDate.of(entity.getInitPeriod().getYear(), entity.getInitPeriod().getMonth()+1, entity.getInitPeriod().getDate()));
-			System.out.println(p2.getMonths());
-			
-			final long p = ChronoUnit.DAYS.between(LocalDate.of(entity.getInitPeriod().getYear(), entity.getInitPeriod().getMonth()+1, entity.getInitPeriod().getDate()), 
-					LocalDate.of(entity.getFinalPeriod().getYear(), entity.getFinalPeriod().getMonth()+1, entity.getFinalPeriod().getDate()));
-			System.out.println(p);
-			errors.state(request, p2.getMonths() >= 1, "initPeriod", "patron.toolkit.form.label.period.month.error");
-			errors.state(request, p >= 7, "finalPeriod", "patron.toolkit.form.label.period.week.error");
-		}
+		if(!errors.hasErrors("finalPeriod")) {
+
+            if(entity.getInitPeriod()!=null) {
+
+
+            final long p = ChronoUnit.DAYS.between(LocalDate.of(entity.getInitPeriod().getYear(), entity.getInitPeriod().getMonth()+1, entity.getInitPeriod().getDate()), 
+            LocalDate.of(entity.getFinalPeriod().getYear(), entity.getFinalPeriod().getMonth()+1, entity.getFinalPeriod().getDate()));
+
+            errors.state(request, p == 7, "finalPeriod", "inventor.chimpum.form.label.period.week.error");
+            }
+
+        }
+
+
+        if(!errors.hasErrors("initPeriod")) {
+
+
+
+            final Period periodCreationInit = Period.between(LocalDate.of(entity.getCreationMoment().getYear(), entity.getCreationMoment().getMonth()+1, entity.getCreationMoment().getDate()), 
+                LocalDate.of(entity.getInitPeriod().getYear(), entity.getInitPeriod().getMonth()+1, entity.getInitPeriod().getDate()));
+
+
+            if(periodCreationInit.isNegative()==true && entity.getCreationMoment().getYear()!= entity.getInitPeriod().getYear()) {
+            errors.state(request, periodCreationInit.isNegative()!=true, "initPeriod", "inventor.chimpum.form.label.period.beforeyear.error");
+
+            }else if(entity.getCreationMoment().getYear()== entity.getInitPeriod().getYear()) {
+                errors.state(request, periodCreationInit.getMonths()>=1, "initPeriod", "inventor.chimpum.form.label.period.month.error");
+
+            }
+
+
+
+        }
 		
 		Collection<Artefact> artefacts;
 		Collection<Chimpum> chimpums;

@@ -14,6 +14,7 @@ import acme.features.spam.SpamDetector;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractUpdateService;
 import acme.roles.Patron;
 
@@ -28,7 +29,22 @@ public class PatronChimpumUpdateService  implements AbstractUpdateService<Patron
 	
 	@Override
 	public boolean authorise(final Request<Chimpum> request) {
-		return true;
+		assert request != null;
+		boolean result;
+		final int chimpumId;
+		final Chimpum chimpum;
+		Principal user;
+		final int patronId;
+		
+		
+		chimpumId = request.getModel().getInteger("id");
+		user = request.getPrincipal();
+		chimpum = this.repository.findChimpumById(chimpumId);
+		patronId = chimpum.getPatron().getId();
+		
+		result = (patronId == user.getActiveRoleId());
+		
+		return result;
 	}
 
 	@Override
@@ -100,18 +116,48 @@ public class PatronChimpumUpdateService  implements AbstractUpdateService<Patron
 			errors.state(request, SpamDetector.error(entity.getDescription(),  this.repository.findSystemConfiguration()), "description", "any.form.error.spam");
 		}
 		
+		if(!errors.hasErrors("code")) {
+            Chimpum chimpum;
+            chimpum = this.repository.findOneByCode(entity.getCode());
+            errors.state(request, chimpum == null, "code", "inventor.chimpum.error.duplicated");
+        }
+		
+		
 	
-		if(!errors.hasErrors("initPeriod") && !errors.hasErrors("finalPeriod")) {			
-			final Period p2 = Period.between(LocalDate.of(entity.getCreationMoment().getYear(), entity.getCreationMoment().getMonth()+1, entity.getCreationMoment().getDate()), 
-					LocalDate.of(entity.getInitPeriod().getYear(), entity.getInitPeriod().getMonth()+1, entity.getInitPeriod().getDate()));
-			System.out.println(p2.getMonths());
-			
-			final long p = ChronoUnit.DAYS.between(LocalDate.of(entity.getInitPeriod().getYear(), entity.getInitPeriod().getMonth()+1, entity.getInitPeriod().getDate()), 
-					LocalDate.of(entity.getFinalPeriod().getYear(), entity.getFinalPeriod().getMonth()+1, entity.getFinalPeriod().getDate()));
-			System.out.println(p);
-			errors.state(request, p2.getMonths() >= 1, "initPeriod", "patron.toolkit.form.label.period.month.error");
-			errors.state(request, p >= 7, "finalPeriod", "patron.toolkit.form.label.period.week.error");
-		}
+		
+		if(!errors.hasErrors("finalPeriod")) {
+
+            if(entity.getInitPeriod()!=null) {
+
+
+            final long p = ChronoUnit.DAYS.between(LocalDate.of(entity.getInitPeriod().getYear(), entity.getInitPeriod().getMonth()+1, entity.getInitPeriod().getDate()), 
+            LocalDate.of(entity.getFinalPeriod().getYear(), entity.getFinalPeriod().getMonth()+1, entity.getFinalPeriod().getDate()));
+
+            errors.state(request, p == 7, "finalPeriod", "inventor.chimpum.form.label.period.week.error");
+            }
+
+        }
+
+
+        if(!errors.hasErrors("initPeriod")) {
+
+
+
+            final Period periodCreationInit = Period.between(LocalDate.of(entity.getCreationMoment().getYear(), entity.getCreationMoment().getMonth()+1, entity.getCreationMoment().getDate()), 
+                LocalDate.of(entity.getInitPeriod().getYear(), entity.getInitPeriod().getMonth()+1, entity.getInitPeriod().getDate()));
+
+
+            if(periodCreationInit.isNegative()==true && entity.getCreationMoment().getYear()!= entity.getInitPeriod().getYear()) {
+            errors.state(request, periodCreationInit.isNegative()!=true, "initPeriod", "inventor.chimpum.form.label.period.beforeyear.error");
+
+            }else if(entity.getCreationMoment().getYear()== entity.getInitPeriod().getYear()) {
+                errors.state(request, periodCreationInit.getMonths()>=1, "initPeriod", "inventor.chimpum.form.label.period.month.error");
+
+            }
+
+
+
+        }
 	
 	}
 

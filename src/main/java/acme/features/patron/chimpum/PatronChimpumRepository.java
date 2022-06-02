@@ -9,6 +9,7 @@ import acme.entities.artefact.Artefact;
 import acme.entities.chimpum.Chimpum;
 import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.framework.repositories.AbstractRepository;
+import acme.roles.Patron;
 
 
 @Repository
@@ -33,5 +34,14 @@ public interface PatronChimpumRepository  extends AbstractRepository{
 	
 	@Query("select currencies from SystemConfiguration c")
     String findAllCurrencies();
+
+	@Query("Select c from Chimpum c where c.patron.id = :patronId")
+	Collection<Chimpum> findChimpumByPatronId(int patronId);
+
+	@Query("Select p from Patron p where p.id = :patronId")
+	Patron findPatronById(int patronId);
+
+	@Query("Select c from Chimpum c where c.code = :code")
+	Chimpum findOneByCode(String code);
 
 }
