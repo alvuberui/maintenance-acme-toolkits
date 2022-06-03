@@ -9,13 +9,13 @@ import acme.testing.TestHarness;
 public class PatronChimpumUpdateTool extends TestHarness{
 
 	@ParameterizedTest
-	@CsvFileSource(resources = "/patron/chimpum/chimpum-update-tool.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@CsvFileSource(resources = "/patron/chimpum/chimpum-update-component.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
 	public void positivePatronChimpum(final String artefactName, final String artefactCode) {
 		super.signIn("patron1", "patron1");
 		super.clickOnMenu("Authenticated", "Artefact List");
 		super.sortListing(1, "asc");
-		super.clickOnListingRecord(0);
+		super.clickOnListingRecord(3);
 		final String [] currentQuery = super.getCurrentQuery().split("=");
 		final String id = currentQuery[1];
 
@@ -24,17 +24,12 @@ public class PatronChimpumUpdateTool extends TestHarness{
 		super.sortListing(1, "asc");
 		super.clickOnListingRecord(0);
 		super.checkFormExists();
-		super.clickOnButton("Change Tool");
+		super.clickOnButton("Change Component");
 		super.fillInputBoxIn("artefactId", id);
-		super.clickOnSubmit("Change Tool");
+		super.clickOnSubmit("Change Component");
 		
-		super.clickOnMenu("Patron", "Chimpum List");
-		super.checkListingExists();
-		super.sortListing(1, "asc");
-		super.clickOnListingRecord(0);
-		super.checkFormExists();
-		super.checkInputBoxHasValue("toolName", artefactName);
-		super.checkInputBoxHasValue("toolCode", artefactCode);
+		super.checkNotErrorsExist();
+		super.checkNotPanicExists();
 		
 		
 		super.signOut();

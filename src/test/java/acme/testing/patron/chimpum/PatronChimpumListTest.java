@@ -1,6 +1,7 @@
 package acme.testing.patron.chimpum;
 
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -34,9 +35,18 @@ public class PatronChimpumListTest extends TestHarness{
 		super.checkInputBoxHasValue("creationMoment", creationMoment);
 		super.checkInputBoxHasValue("budget", budget);
 		super.checkInputBoxHasValue("link", link);
-		super.checkInputBoxHasValue("toolName", artefactName);
-		super.checkInputBoxHasValue("toolCode", artefactCode);
+		super.checkInputBoxHasValue("ComponentName", artefactName);
+		super.checkInputBoxHasValue("ComponentCode", artefactCode);
 
 		super.signOut();
+	}
+	
+	@Test
+	@Order(30)
+	public void hackingTest() {
+		
+		// TESTS LOS CUALES EL FRAMEWORK NO SOPORTA: 
+		// A) Aceder a un chimpum a través de la url, poniendo la id de un "component".
+		// B) Acceder al listado de chimpum con otra cuenta que no sea propietaria.
 	}
 }
