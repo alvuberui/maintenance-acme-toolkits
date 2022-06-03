@@ -15,7 +15,7 @@ public class PatronChimpumCreateTest extends TestHarness {
 	public void negativeTest(final int recordIndex, final String code, final String descripcion, final String initPeriod, final String finalPeriod, final String creationMoment, final String budget,  final String link) {
 		
 		super.clickOnMenu("Anonymous", "Artefact List");
-		super.clickOnListingRecord(0);
+		super.clickOnListingRecord(3);
 		final String id = super.getCurrentQuery().split("=")[1];
 		
 		super.signIn("patron1", "patron1");
@@ -45,7 +45,7 @@ public class PatronChimpumCreateTest extends TestHarness {
 	public void positiveTest(final int recordIndex, final String code, final String descripcion, final String initPeriod, final String finalPeriod, final String creationMoment, final String budget,  final String link) {
 		
 		super.clickOnMenu("Anonymous", "Artefact List");
-		super.clickOnListingRecord(0);
+		super.clickOnListingRecord(3);
 		final String id = super.getCurrentQuery().split("=")[1];
 		
 		super.signIn("patron2", "patron2");
